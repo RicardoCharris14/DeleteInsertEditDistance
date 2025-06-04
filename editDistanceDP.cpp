@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include "editDistanceDP.h"
 
 int editDistanceDP(std::string S, std::string T, int n, int m){
     
@@ -24,14 +25,4 @@ int editDistanceDP(std::string S, std::string T, int n, int m){
     }
     
     return table[n][m];
-}
-
-
-
-int main(){
-    std::string S, T;
-    std::cin >> S >> T;
-    std::cout << editDistanceDP(S, T, S.length(), T.length());
-
-    return 0;
 }

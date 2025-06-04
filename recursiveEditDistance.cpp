@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include "recursiveEditDistance.h"
 
 int editDistanceRecursive(std::string S, std::string T, int n, int m){
 
@@ -15,19 +16,4 @@ int editDistanceRecursive(std::string S, std::string T, int n, int m){
                             editDistanceRecursive(S, T, n-1, m)
                         );
     }
-}
-
-int editDistanceDeleteInsert(std::string S, std::string T){
-    return editDistanceRecursive(S, T, S.length(), T.length());
-}
-
-
-
-
-int main(){
-    std::string S, T;
-    std::cin >> S >> T;
-    std::cout << editDistanceDeleteInsert(S, T);
-
-    return 0;
 }
