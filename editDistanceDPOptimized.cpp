@@ -2,7 +2,7 @@
 #include <vector>
 #include "editDistanceDPO.h"
 
-int editDistanceDPOptimized(std::string S, std::string T, int n, int m){
+int editDistanceDPOptimized(const std::string& S, const std::string& T, int n, int m){
     std::vector<int> fila1(m+1);
     std::vector<int> fila2(m+1);
 

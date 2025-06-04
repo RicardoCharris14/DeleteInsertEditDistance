@@ -3,7 +3,7 @@
 #include <vector>
 #include "editDistanceDP.h"
 
-int editDistanceDP(std::string S, std::string T, int n, int m){
+int editDistanceDP(const std::string& S, const std::string& T, int n, int m){
     
     std::vector<std::vector<int>> table(n + 1, std::vector<int>(m + 1, 0));
     for (int i = 0; i < n + 1; i++){

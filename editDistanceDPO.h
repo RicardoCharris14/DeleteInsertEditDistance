@@ -2,6 +2,6 @@
 #define EDITDISTANCEDPO_H
 #include <string>
 
-int editDistanceDPOptimized(std::string S, std::string T, int n, int m);
+int editDistanceDPOptimized(const std::string& S, const std::string& T, int n, int m);
 
 #endif

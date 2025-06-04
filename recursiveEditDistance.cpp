@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "recursiveEditDistance.h"
 
-int editDistanceRecursive(std::string S, std::string T, int n, int m){
+int editDistanceRecursive(const std::string& S, const std::string& T, int n, int m){
 
     if (n == 0){
         return m;

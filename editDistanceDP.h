@@ -2,7 +2,7 @@
 #define EDITDISTANCEDP_H
 #include <string>
 
-int editDistanceDP(std::string S, std::string T, int n, int m);
+int editDistanceDP(const std::string& S, const std::string& T, int n, int m);
 
 #endif
 

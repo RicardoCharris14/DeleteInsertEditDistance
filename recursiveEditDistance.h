@@ -2,6 +2,6 @@
 #define RECURSIVEEDITDISTANCE_H
 #include <string>
 
-int editDistanceRecursive(std::string S, std::string T, int n, int m);
+int editDistanceRecursive(const std::string& S, const std::string& T, int n, int m);
 
 #endif
