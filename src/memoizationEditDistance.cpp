@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
-#include "memoizationEditDistance.h"
+#include <climits>
+#include "../include/memoizationEditDistance.h"
 
 int editDistanceMemo(const std::string& S, const std::string& T, int n, int m, std::vector<std::vector<ll>>& resultados){
 

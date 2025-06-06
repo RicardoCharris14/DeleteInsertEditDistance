@@ -1,0 +1,40 @@
+# Compilador y flags
+CXX = g++
+CXXFLAGS = -Wall -g
+
+# Directorios
+SRCDIR = src
+INCDIR = include
+OBJDIR = buildMain
+BINDIR = bin
+
+# Archivos fuente (en src/)
+SOURCES = main.cpp recursiveEditDistance.cpp memoizationEditDistance.cpp editDistanceDP.cpp editDistanceDPO.cpp
+SRCFILES = $(addprefix $(SRCDIR)/, $(SOURCES))
+
+# Archivos encabezado (en include/)
+HEADERS = recursiveEditDistance.h memoizationEditDistance.h editDistanceDP.h editDistanceDPO.h
+INCFILES = $(addprefix $(INCDIR)/, $(HEADERS))
+
+# Archivos objeto (en buildMain/)
+OBJECTS = $(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))
+
+# Ejecutable
+TARGET = $(BINDIR)/main
+
+# Regla principal
+all: $(TARGET)
+
+# Compilar el ejecutable a partir de objetos
+$(TARGET): $(OBJECTS)
+	@mkdir -p $(BINDIR)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+# Compilar cada .cpp en su .o correspondiente
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(INCFILES)
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Limpieza
+clean:
+	rm -f $(OBJDIR)/*.o $(TARGET)

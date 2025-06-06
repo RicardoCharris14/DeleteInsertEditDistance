@@ -16,10 +16,8 @@
 
 inline void validate_input(int argc, char *argv[], std::int64_t& runs, std::string& file1, std::string& file2, std::string& file3, std::string& file4)
 {
-    if (argc != 7) {
-        std::cerr << "Usage: <filename> <RUNS> <file string 1> <file string 2> <file string 3> <file string 4>" << std::endl;
-        std::cerr << "<filename> is the name of the file where performance data will be written." << std::endl;
-        std::cerr << "It is recommended for <filename> to have .csv extension and it should not previously exist." << std::endl;
+    if (argc != 6) {
+        std::cerr << "Usage: <RUNS> <file string 1> <file string 2> <file string 3> <file string 4>" << std::endl;
         std::cerr << "<RUNS>: numbers of runs per test case: should be >= 32." << std::endl;
         std::exit(EXIT_FAILURE);
     }

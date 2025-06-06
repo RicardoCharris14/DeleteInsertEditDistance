@@ -1,0 +1,61 @@
+# Compilador y flags
+CXX = g++
+CXXFLAGS = -Wall -g -Iinclude
+
+# Directorios
+SRCDIR = src
+INCDIR = include
+OBJDIR = buildExp
+BINDIR = bin
+
+# Archivos fuente
+SOURCES = \
+	$(SRCDIR)/uhrMod/uhr.cpp \
+	$(SRCDIR)/recursiveEditDistance.cpp \
+	$(SRCDIR)/memoizationEditDistance.cpp \
+	$(SRCDIR)/editDistanceDP.cpp \
+	$(SRCDIR)/editDistanceDPO.cpp
+
+# Objetos a generar con nombres aplanados
+OBJECTS = \
+	$(OBJDIR)/uhr.o \
+	$(OBJDIR)/recursiveEditDistance.o \
+	$(OBJDIR)/memoizationEditDistance.o \
+	$(OBJDIR)/editDistanceDP.o \
+	$(OBJDIR)/editDistanceDPO.o
+
+# Ejecutable
+TARGET = $(BINDIR)/experimentacion
+
+# Regla principal
+all: $(TARGET)
+
+# Enlazar ejecutable
+$(TARGET): $(OBJECTS)
+	@mkdir -p $(BINDIR)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+# Reglas explícitas para compilar cada fuente
+$(OBJDIR)/uhr.o: $(SRCDIR)/uhrMod/uhr.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/recursiveEditDistance.o: $(SRCDIR)/recursiveEditDistance.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/memoizationEditDistance.o: $(SRCDIR)/memoizationEditDistance.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/editDistanceDP.o: $(SRCDIR)/editDistanceDP.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/editDistanceDPO.o: $(SRCDIR)/editDistanceDPO.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Limpieza
+clean:
+	rm -f $(OBJDIR)/*.o $(TARGET)

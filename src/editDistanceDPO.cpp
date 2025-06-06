@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "editDistanceDPO.h"
+#include "../include/editDistanceDPO.h"
 
 int editDistanceDPOptimized(const std::string& S, const std::string& T, int n, int m){
     std::vector<int> fila1(m+1);

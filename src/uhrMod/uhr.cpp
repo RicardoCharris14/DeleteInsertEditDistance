@@ -16,12 +16,12 @@
 #include <iostream>
 #include <random>
 #include <vector>
-#include <windows.h>
+#include <climits>
 
-#include "../recursiveEditDistance.h"
-#include "../memoizationEditDistance.h"
-#include "../editDistanceDP.h"
-#include "../editDistanceDPO.h"
+#include "../../include/recursiveEditDistance.h"
+#include "../../include/memoizationEditDistance.h"
+#include "../../include/editDistanceDP.h"
+#include "../../include/editDistanceDPO.h"
 #include "utils.cpp"
 
 // Include to be tested files here
@@ -35,13 +35,11 @@ int main(int argc, char *argv[])
     validate_input(argc, argv, runs, files[0], files[1], files[2], files[3]);
 
     // Set up clock variables
-    std::int64_t n, i, executed_runs;
+    std::int64_t i, executed_runs;
     std::int64_t total_runs_additive = runs;
-    std::int64_t total_runs_multiplicative = runs;
     std::vector<double> times(runs);
     std::vector<double> q;
     double mean_time, time_stdev, dev;
-    SIZE_T mean_memory, begin_memory, end_memory, total_memory;
     auto begin_time = std::chrono::high_resolution_clock::now();
     auto end_time = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::nano> elapsed_time = end_time - begin_time;
@@ -52,7 +50,7 @@ int main(int argc, char *argv[])
     std::uniform_int_distribution<std::int64_t> u_distr; // change depending on app
 
     for (int a=1 ; a<4 ; a++){
-        std::string csv = "editDistance";
+        std::string csv = "resultados_experimentacion/editDist";
         switch (a){
         case 1:
             csv += "Memo.csv";
@@ -70,7 +68,7 @@ int main(int argc, char *argv[])
         // File to write time data
         std::ofstream time_data;
         time_data.open(csv);
-        time_data << "S,T,result,memory_mean,t_mean,t_stdev,t_Q0,t_Q1,t_Q2,t_Q3,t_Q4" << std::endl;
+        time_data << "S,T,result,t_mean,t_stdev,t_Q0,t_Q1,t_Q2,t_Q3,t_Q4" << std::endl;
     
         // Begin testing
         int result;
@@ -81,7 +79,6 @@ int main(int argc, char *argv[])
                 if (j == k) continue;
                 mean_time = 0;
                 time_stdev = 0;
-                mean_memory = 0;
                 read_file(files[j], files[k], S, T);
             
                 // Run to compute elapsed time
@@ -108,19 +105,15 @@ int main(int argc, char *argv[])
                         break;
                     }
                     end_time = std::chrono::high_resolution_clock::now();
-                    
-                    total_memory = end_memory - begin_memory;
 
                     elapsed_time = end_time - begin_time;
                     times[i] = elapsed_time.count();
             
                     mean_time += times[i];
-                    //mean_memory += total_memory;
                 }
             
                 // Compute statistics
                 mean_time /= runs;
-                //mean_memory /= runs;
             
                 for (i = 0; i < runs; i++) {
                     dev = times[i] - mean_time;
@@ -132,7 +125,7 @@ int main(int argc, char *argv[])
             
                 quartiles(times, q);
             
-                time_data << files[j] << "," << files[k] << "," << result << "," << mean_memory << "," << mean_time << "," << time_stdev << ",";
+                time_data << files[j] << "," << files[k] << "," << result << "," << mean_time << "," << time_stdev << ",";
                 time_data << q[0] << "," << q[1] << "," << q[2] << "," << q[3] << "," << q[4] << std::endl;
             }
         }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include "editDistanceDP.h"
+#include "../include/editDistanceDP.h"
 
 int editDistanceDP(const std::string& S, const std::string& T, int n, int m){
     

@@ -2,16 +2,17 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <climits>
 
-#include "recursiveEditDistance.h"
-#include "memoizationEditDistance.h"
-#include "editDistanceDP.h"
-#include "editDistanceDPO.h"
+#include "../include/recursiveEditDistance.h"
+#include "../include/memoizationEditDistance.h"
+#include "../include/editDistanceDP.h"
+#include "../include/editDistanceDPO.h"
 
 int main(int argc, char* argv[]){
     if (argc < 4){
         std::cerr << "Use el formato: ./main -a <algoritmo: recursive, memo,DP, DPO>" 
-        "-s <ruta archivo .txt de entrada> -t <ruta archivo .txt objetivo>" << std::endl;
+        " -s <ruta archivo .txt de entrada> -t <ruta archivo .txt objetivo>" << std::endl;
     } else {
         std::string ruta_S, ruta_T, S, T, algoritmo;
         for(int i = 1; i < argc; i++){
