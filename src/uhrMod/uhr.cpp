@@ -32,7 +32,8 @@ int main(int argc, char *argv[])
     std::int64_t runs;
     std::string files[4];
     std::string S, T;
-    validate_input(argc, argv, runs, files[0], files[1], files[2], files[3]);
+    bool acceptRecursive;
+    validate_input(argc, argv, runs, files[0], files[1], files[2], files[3], acceptRecursive);
 
     // Set up clock variables
     std::int64_t i, executed_runs;
@@ -49,8 +50,10 @@ int main(int argc, char *argv[])
     std::mt19937_64 rng(rd());
     std::uniform_int_distribution<std::int64_t> u_distr; // change depending on app
 
-    for (int a=1 ; a<4 ; a++){
-        std::string csv = "resultados_experimentacion/editDist";
+    int limit = 5;
+    if (!acceptRecursive) limit=4;
+    for (int a=1 ; a<limit ; a++){
+        std::string csv = "resultados_experimentacion/editDistance";
         switch (a){
         case 1:
             csv += "Memo.csv";
@@ -60,6 +63,9 @@ int main(int argc, char *argv[])
             break;
         case 3:
             csv += "DPO.csv";
+            break;
+        case 4:
+            csv += "recursive.csv";
             break;
         default:
             std::exit(EXIT_FAILURE);
@@ -99,6 +105,9 @@ int main(int argc, char *argv[])
                         break;
                     case 3:
                         result = editDistanceDPOptimized(S, T, S.length(), T.length());
+                        break;
+                    case 4:
+                        result = editDistanceRecursive(S, T, S.length(), T.length());
                         break;
                     default:
                         std::exit(EXIT_FAILURE);

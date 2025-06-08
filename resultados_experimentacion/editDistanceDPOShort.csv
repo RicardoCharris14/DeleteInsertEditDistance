@@ -1,0 +1,13 @@
+S,T,result,t_mean,t_stdev,t_Q0,t_Q1,t_Q2,t_Q3,t_Q4
+textos/file1s.txt,textos/file2s.txt,18,1383.25,366.532,1089,1210.5,1262.5,1435.25,1919
+textos/file1s.txt,textos/file3s.txt,31,3665,194.688,3516,3518.25,3608,3754.75,3928
+textos/file1s.txt,textos/file4s.txt,204,27092.5,8241.57,21467,21542.8,23966.5,29516.2,38970
+textos/file2s.txt,textos/file1s.txt,18,1211.75,159.27,1061,1084.25,1202,1329.5,1382
+textos/file2s.txt,textos/file3s.txt,29,2192.5,132.722,2057,2108.75,2175,2258.75,2363
+textos/file2s.txt,textos/file4s.txt,206,12634.8,228.074,12387,12471.8,12642.5,12805.5,12867
+textos/file3s.txt,textos/file1s.txt,31,6092.75,4285.43,3783,3813,4037.5,6317.25,12513
+textos/file3s.txt,textos/file2s.txt,29,2396.5,175.109,2192,2283.5,2410.5,2523.5,2573
+textos/file3s.txt,textos/file4s.txt,193,59288,10224.7,50685,51069,57330,65549,71807
+textos/file4s.txt,textos/file1s.txt,204,24416,865.926,23827,23980,24067,24503,25703
+textos/file4s.txt,textos/file2s.txt,206,17832,8564.47,13273,13408.8,13691.5,18114.8,30672
+textos/file4s.txt,textos/file3s.txt,193,51157,415.873,50773,50845,51092.5,51404.5,51670

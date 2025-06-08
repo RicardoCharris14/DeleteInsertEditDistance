@@ -14,21 +14,25 @@
 #include <sstream>
 #include <fstream>
 
-inline void validate_input(int argc, char *argv[], std::int64_t& runs, std::string& file1, std::string& file2, std::string& file3, std::string& file4)
+inline void validate_input(int argc, char *argv[], std::int64_t& runs, std::string& file1, std::string& file2, std::string& file3,
+ std::string& file4, bool& acceptRecursive)
 {
-    if (argc != 6) {
-        std::cerr << "Usage: <RUNS> <file string 1> <file string 2> <file string 3> <file string 4>" << std::endl;
+    if (argc != 7) {
+        std::cerr << "Usage: <RUNS> <file string 1> <file string 2> <file string 3> <file string 4> <recursive(s/n)>" << std::endl;
         std::cerr << "<RUNS>: numbers of runs per test case: should be >= 32." << std::endl;
         std::exit(EXIT_FAILURE);
     }
 
     // Read command line arguments
     try {
-        runs = std::stoll(argv[2]);
-        file1 = argv[3];
-        file2 = argv[4];
-        file3 = argv[5];
-        file4 = argv[6];
+        runs = std::stoll(argv[1]);
+        file1 = argv[2];
+        file2 = argv[3];
+        file3 = argv[4];
+        file4 = argv[5];
+        if (std::string(argv[6]) == "s" || std::string(argv[6]) == "S"){
+            acceptRecursive = true;
+        } else {acceptRecursive = false;}
 
     } catch (std::invalid_argument const& ex) {
         std::cerr << "std::invalid_argument::what(): " << ex.what() << std::endl;

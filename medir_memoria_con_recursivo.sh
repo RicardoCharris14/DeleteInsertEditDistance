@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Archivos posibles para S y T
-files=("textos/file1.txt" "textos/file2.txt" "textos/file3.txt" "textos/file4.txt")
+files=("textos/file1s.txt" "textos/file2s.txt" "textos/file3s.txt" "textos/file4s.txt")
 
 # Algoritmos posibles
-algos=("memo" "DP" "DPO")
+algos=("recursive" "memo" "DP" "DPO")
 
 # Archivo CSV de salida
-output="uso_memoria_algoritmos.csv"
+output="uso_memoria_algoritmos_short.csv"
 
 # Escribir encabezado CSV
 echo "algoritmo,S,T,memoria_usada" > "$output"
@@ -21,7 +21,7 @@ for a in "${algos[@]}"; do
       # Evitar que S y T sean iguales
       if [[ "$s" != "$t" ]]; then
         # Ejecutar el comando y obtener la memoria usada
-        mem=$(command time -v ./bin/main -a "$a" -s "$s" -t "$t" 2>&1 | grep "Maximum resident set size " | awk '{print $6}')
+        mem=$(command time -v ./bin/main -a "$a" -s "$s" -t "$t" -i textos 2>&1 | grep "Maximum resident set size " | awk '{print $6}')
         
         # Guardar en CSV
         echo "$a,$s,$t,$mem" >> "$output"
