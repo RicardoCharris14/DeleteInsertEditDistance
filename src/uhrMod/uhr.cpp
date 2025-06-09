@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
             csv += "DPO.csv";
             break;
         case 4:
-            csv += "recursive.csv";
+            csv += "Recursive.csv";
             break;
         default:
             std::exit(EXIT_FAILURE);
